@@ -1,27 +1,50 @@
+import HomeHeader from "@/components/HomeHeader";
 import { client } from "../../sanity/lib/client";
+import { Separator } from "@/components/ui/separator";
+import { PortableText } from "@portabletext/react";
+import { customDefaultComponents } from "@/components/CustomBlockComponents";
 
 async function getContent() {
-  const CONTENT_QUERY = `*[_type == "project"] {
-    ...,
-    coverImage {
+  const CONTENT_QUERY = `*[_type == "homepage"] {
+    title,
+    description,
+    content[]{
       ...,
-      asset->
+      _type == "image" => {
+        ...,
+        asset->{
+          _id,
+          url
+        }
+      }
     },
-    duration {
-      ...
+    headerImg {
+      asset -> {
+        url
+      },
+      alt
     },
-    tags[],
-    body
+    headerTitle
+  
   }`;
   const content = await client.fetch(CONTENT_QUERY);
-  return content;
+  return content[0];
 }
 
 export default async function Home() {
-  const content = await getContent();
+  const sanityData = await getContent();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {content[0].title}
-    </main>
+    <div>
+      <HomeHeader sanityData={sanityData} />
+      <Separator className="max-w-screen-lg mt-12 md:mt-16 md:mb-14 mb-10 mx-auto" />
+      <section className="max-w-screen-lg mx-auto flex flex-col items-stretch px-4">
+        <h1 className="text-3xl font-medium">{sanityData.title}</h1>
+        <p className="text-xl text-zinc-600">{sanityData.description}</p>
+        <PortableText
+          value={sanityData.content}
+          components={customDefaultComponents}
+        />
+      </section>
+    </div>
   );
 }
