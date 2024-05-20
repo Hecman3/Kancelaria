@@ -29,13 +29,13 @@ const Footer = async () => {
               {sanityData.contact.title}
             </h2>
             <p className="text-sm text-zinc-600">
-              {sanityData.contact.addresses[0].street}
+              {sanityData.contact?.addresses[0].street}
               <br />
-              {sanityData.contact.addresses[0].city}
+              {sanityData.contact?.addresses[0].city}
               <br />
-              <span className="mr-4">
-                tel. {sanityData.contact.addresses[0].addressPhone}
-              </span>
+              {sanityData.contact && (
+                <span>tel. {sanityData.contact.addresses[0].addressPhone}</span>
+              )}
             </p>
           </div>
           <div>
