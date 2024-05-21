@@ -38,7 +38,7 @@ const Contact = async () => {
   const sanityData = await getContact();
   return (
     <div>
-      <BannerHeader sanityData={sanityData} queue={1} />
+      <BannerHeader sanityData={sanityData} />
       <Separator className="max-w-screen-lg mt-10 md:mt-14 md:mb-14 mb-10 mx-auto" />
       <section className="px-4">
         <div className="flex flex-col md:flex-row justify-between gap-8">

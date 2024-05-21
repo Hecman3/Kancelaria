@@ -15,7 +15,7 @@ const customComponents = {
   },
 } as PortableTextComponents;
 
-const HomeHeader = async ({ sanityData }: { sanityData: ContentPropsType }) => {
+const HomeHeader = ({ sanityData }: { sanityData: ContentPropsType }) => {
   return (
     <header className="grid max-w-screen-xl mx-auto w-full px-4 gap-12 md:gap-16 pt-12 md:pt-16 md:grid-cols-2 grid-cols-1 justify-items-stretch items-center">
       <div className="flex md:justify-end justify-center">

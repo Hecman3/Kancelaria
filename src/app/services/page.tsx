@@ -36,7 +36,7 @@ const Services = async () => {
   const sanityData = await getServices();
   return (
     <div>
-      <BannerHeader sanityData={sanityData} queue={2} />
+      <BannerHeader sanityData={sanityData} />
       <Separator className="max-w-screen-lg mt-10 md:mt-14 md:mb-14 mb-10 mx-auto" />
       <section className="px-4 max-w-screen-lg mx-auto">
         <div className="space-y-1 mb-8">
