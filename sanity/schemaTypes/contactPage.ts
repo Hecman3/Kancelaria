@@ -11,6 +11,11 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "description",
+      title: "Opis",
+      type: "text",
+    }),
+    defineField({
       name: "addresses",
       title: "Adresy",
       type: "array",

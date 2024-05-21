@@ -19,8 +19,11 @@ const getAbout = async () => {
   }`;
   const content = await client.fetch(CONTENT_QUERY);
   const aboutData = content[0];
+
   if (aboutData.headerImg?.asset) {
-    aboutData.headerImg.optimizedUrl = urlFor(aboutData.headerImg.asset.url);
+    aboutData.headerImg.optimizedUrl = urlFor({
+      source: aboutData.headerImg.asset.url,
+    });
   }
   return aboutData;
 };

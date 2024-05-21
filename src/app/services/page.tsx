@@ -21,9 +21,9 @@ const getServices = async () => {
   const content = await client.fetch(CONTENT_QUERY);
   const servicesData = content[0];
   if (servicesData.headerImg?.asset) {
-    servicesData.headerImg.optimizedUrl = urlFor(
-      servicesData.headerImg.asset.url
-    );
+    servicesData.headerImg.optimizedUrl = urlFor({
+      source: servicesData.headerImg.asset.url,
+    });
   }
   return content[0];
 };

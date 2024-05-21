@@ -27,9 +27,9 @@ const getContact = async () => {
   const contactData = content[0];
 
   if (contactData.headerImg?.asset) {
-    contactData.headerImg.optimizedUrl = urlFor(
-      contactData.headerImg.asset.url
-    );
+    contactData.headerImg.optimizedUrl = urlFor({
+      source: contactData.headerImg.asset.url,
+    });
   }
   return contactData;
 };

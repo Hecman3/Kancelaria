@@ -41,14 +41,6 @@ const Footer = async () => {
           <div>
             <h2 className="text-lg font-semibold mb-2">Menu</h2>
             <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/"
-                  className={`transition-colors ease-out inline-block border-y-2 border-y-transparent hover:border-b-zinc-300`}
-                >
-                  Strona główna
-                </Link>
-              </li>
               {linkArray.map((link) => (
                 <li key={link.key}>
                   <Link
