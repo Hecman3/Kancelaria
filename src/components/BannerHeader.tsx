@@ -8,9 +8,10 @@ const BannerHeader = ({ sanityData }: { sanityData: ContentPropsType }) => {
     <header className="grid max-w-screen-xl mx-auto w-full px-4 gap-12 md:gap-16 pt-12 md:pt-16 grid-cols-1 justify-items-stretch items-center">
       <div className="relative h-[400px] flex items-center justify-center p-12">
         <Image
-          src={sanityData?.headerImg?.asset.url}
+          src={sanityData?.headerImg?.optimizedUrl}
           alt={sanityData?.headerImg?.alt}
-          fill
+          height={400}
+          width={1248}
           priority
           className="absolute top-0 left-0 w-full h-full object-center object-cover rounded-lg "
         />

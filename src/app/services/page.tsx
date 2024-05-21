@@ -3,6 +3,7 @@ import { client } from "../../../sanity/lib/client";
 import { Asterisk } from "lucide-react";
 import BannerHeader from "@/components/BannerHeader";
 import { Separator } from "@/components/ui/separator";
+import { urlFor } from "@/lib/utils";
 
 const getServices = async () => {
   const CONTENT_QUERY = `*[_type == "services"] {
@@ -18,6 +19,12 @@ const getServices = async () => {
     headerTitle
   }`;
   const content = await client.fetch(CONTENT_QUERY);
+  const servicesData = content[0];
+  if (servicesData.headerImg?.asset) {
+    servicesData.headerImg.optimizedUrl = urlFor(
+      servicesData.headerImg.asset.url
+    );
+  }
   return content[0];
 };
 type ServiceType = {
@@ -41,7 +48,6 @@ const Services = async () => {
             sanityData.services.map((service: ServiceType, index: number) => (
               <Card key={index} className="">
                 <CardHeader>
-                  <Asterisk className="h-6 w-6" />
                   <CardTitle className="text-lg">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>

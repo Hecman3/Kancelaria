@@ -56,7 +56,7 @@ const Nav = () => {
             <li key={link.key}>
               <Link
                 href={link.path}
-                className={`px-3 transition-colors ease-out py-2 inline-block border-y-2 border-y-transparent ${pathname === link.path ? "border-b-primary" : "hover:border-b-zinc-300"}`}
+                className={`px-3 transition-colors ease-out py-2 inline-block border-y-2 border-y-transparent ${pathname === link.path ? "border-b-[#08a045]" : "hover:border-b-zinc-300"}`}
               >
                 {link.value}
               </Link>
