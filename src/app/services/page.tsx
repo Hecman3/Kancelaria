@@ -1,3 +1,4 @@
+export const revalidate = 10;
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { client } from "../../../sanity/lib/client";
 import { Asterisk } from "lucide-react";

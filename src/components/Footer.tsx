@@ -1,3 +1,4 @@
+export const revalidate = 10;
 import { linkArray } from "@/data/subpages";
 import Link from "next/link";
 import React from "react";

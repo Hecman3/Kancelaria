@@ -1,3 +1,5 @@
+export const revalidate = 10;
+
 import BannerHeader from "@/components/BannerHeader";
 import { Separator } from "@/components/ui/separator";
 import { client } from "../../../sanity/lib/client";

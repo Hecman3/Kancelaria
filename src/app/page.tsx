@@ -1,3 +1,4 @@
+export const revalidate = 10;
 import HomeHeader from "@/components/HomeHeader";
 import { client } from "../../sanity/lib/client";
 import { Separator } from "@/components/ui/separator";
