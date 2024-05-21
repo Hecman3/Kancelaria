@@ -43,16 +43,19 @@ const Nav = () => {
         </Sheet>
 
         <ul className="hidden md:flex gap-3">
-          {linkArray.map((link) => (
-            <li key={link.key}>
-              <Link
-                href={link.path}
-                className={`px-3 transition-colors ease-out py-2 inline-block border-y-2 border-y-transparent ${pathname === link.path ? "border-b-primary" : "hover:border-b-zinc-300"}`}
-              >
-                {link.value}
-              </Link>
-            </li>
-          ))}
+          {linkArray.map((link) => {
+            if (link.path === "/") return;
+            return (
+              <li key={link.key}>
+                <Link
+                  href={link.path}
+                  className={`px-3 transition-colors ease-out py-2 inline-block border-y-2 border-y-transparent ${pathname === link.path ? "border-b-primary" : "hover:border-b-zinc-300"}`}
+                >
+                  {link.value}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>

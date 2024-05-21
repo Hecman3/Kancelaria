@@ -15,7 +15,10 @@ const getContact = async () => {
   const CONTENT_QUERY = `*[_type == "contact"] {
     title,
     addresses,
-    phones,emails,
+    phones,
+    emails,
+    REGON,
+    NIP,
     headerImg {
       asset -> {
         url
@@ -45,43 +48,52 @@ const Contact = async () => {
         <div className="flex flex-col md:flex-row justify-between gap-8">
           <div className="flex gap-4 flex-col sm:flex-row justify-between">
             <div>
-              <h1 className="text-2xl font-semibold mb-2">
+              <h1 className="text-2xl font-semibold mb-6">
                 {sanityData.title}
               </h1>
-              <div className="text-sm text-zinc-600 space-y-4">
+              <div className="text-zinc-600 space-y-2">
                 {sanityData.addresses.map(
                   (address: AddressTypes, index: number) => (
-                    <div key={index}>
-                      {address.street}
-                      <br />
-                      {address.city}
-                      <br />
-                      {address.addressPhone}
-                    </div>
+                    <>
+                      <div>{address.street}</div>
+                      <div>{address.city}</div>
+                      <div>{address.addressPhone}</div>
+                    </>
                   )
                 )}
-                {sanityData.phones && (
-                  <div>
-                    {sanityData.phones.map((phone: string, index: number) => (
-                      <span key={index} className="block">
-                        {phone}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                {sanityData.emails && (
-                  <div>
-                    {sanityData.emails.map((email: string, index: number) => (
-                      <span key={index} className="block">
-                        {email}
-                      </span>
-                    ))}
-                  </div>
-                )}
+
+                <div className="pt-6">
+                  {sanityData.phones && (
+                    <div>
+                      {sanityData.phones.map((phone: string, index: number) => (
+                        <span key={index} className="block">
+                          {phone}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  {sanityData.emails && (
+                    <div>
+                      {sanityData.emails.map((email: string, index: number) => (
+                        <span key={index} className="block">
+                          {email}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div className="pt-6">
+                  <span>NIP: </span>
+                  <span>{sanityData.NIP}</span>
+                </div>
+                <div>
+                  <span>REGON: </span>
+                  <span>{sanityData.REGON}</span>
+                </div>
               </div>
             </div>
           </div>
-          <div className="md:basis-2/3 ">
+          <div className="md:basis-2/3 min-w-[350px] ">
             <Map addresses={sanityData.addresses} />
           </div>
         </div>

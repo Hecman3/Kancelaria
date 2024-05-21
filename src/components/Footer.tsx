@@ -8,6 +8,7 @@ const getFooter = async () => {
   const CONTACT_QUERY = `*[_type == "contact"] {
     title,
     addresses,
+    emails
   
   }`;
   const OTHER_QUERY = `*[_type == "other"] {
@@ -23,30 +24,35 @@ const Footer = async () => {
   const sanityData = await getFooter();
   return (
     <footer className="border-t bg-white border-t-zinc-100 pt-4 pb-6">
-      <div className="max-w-screen-xl mx-auto px-4 space-y-8">
+      <div className="max-w-screen-xl mx-auto px-4 space-y-12">
         <div className="flex gap-4 flex-col sm:flex-row justify-between">
           <div>
-            <h2 className="text-lg font-semibold mb-2">
-              {sanityData.contact.title}
+            <h2 className="text-lg font-medium mb-1">
+              Kancelaria Adwokacka Adwokat Marcin Hećman
             </h2>
-            <p className="text-sm text-zinc-600">
-              {sanityData.contact?.addresses[0].street}
-              <br />
-              {sanityData.contact?.addresses[0].city}
-              <br />
-              {sanityData.contact && (
-                <span>tel. {sanityData.contact.addresses[0].addressPhone}</span>
-              )}
+            <p className="space-y-1 text-zinc-600">
+              <span className="block border-b-2 border-transparent">
+                {sanityData.contact?.addresses[0].street}
+              </span>
+              <span className="block border-b-2 border-transparent">
+                {sanityData.contact?.addresses[0].city}
+              </span>
+              <span className="block border-b-2 border-transparent">
+                {sanityData.contact.emails[0]}
+              </span>
+              <span className="block border-b-2 border-transparent">
+                {sanityData.contact.addresses[0].addressPhone}
+              </span>
             </p>
           </div>
           <div>
-            <h2 className="text-lg font-semibold mb-2">Menu</h2>
-            <ul className="space-y-2">
+            <h2 className="text-lg font-medium mb-1">Menu</h2>
+            <ul className="space-y-1">
               {linkArray.map((link) => (
                 <li key={link.key}>
                   <Link
                     href={link.path}
-                    className={`transition-colors ease-out inline-block border-y-2 border-y-transparent hover:border-b-zinc-300`}
+                    className={`transition-colors text-left text-zinc-600 ease-out inline-block border-y-2 border-y-transparent hover:text-foreground hover:border-b-zinc-300`}
                   >
                     {link.value}
                   </Link>

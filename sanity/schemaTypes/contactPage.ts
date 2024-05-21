@@ -16,6 +16,16 @@ export default defineType({
       type: "text",
     }),
     defineField({
+      title: "REGON",
+      name: "REGON",
+      type: "number",
+    }),
+    defineField({
+      title: "NIP",
+      name: "NIP",
+      type: "number",
+    }),
+    defineField({
       name: "addresses",
       title: "Adresy",
       type: "array",
