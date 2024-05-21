@@ -11,9 +11,9 @@ const builder = ImageUrlBuilder(client);
 export function urlFor(source: string) {
   return builder
     .image(source)
+    .width(1240)
+    .height(400)
     .format("webp")
-    .quality(75)
-    .width(1600)
-    .height(960)
+    .quality(90)
     .url();
 }

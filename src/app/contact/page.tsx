@@ -2,7 +2,6 @@ import BannerHeader from "@/components/BannerHeader";
 import { client } from "../../../sanity/lib/client";
 import { Separator } from "@/components/ui/separator";
 import Map from "@/components/Map";
-import imageUrlBuilder from "@sanity/image-url";
 import { urlFor } from "@/lib/utils";
 
 type AddressTypes = {
