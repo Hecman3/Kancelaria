@@ -3,12 +3,18 @@ import { PortableText } from "@portabletext/react";
 import { customHeaderComponents } from "./CustomBlockComponents";
 import Image from "next/image";
 
-const BannerHeader = ({ sanityData }: { sanityData: ContentPropsType }) => {
+const BannerHeader = ({
+  sanityData,
+  queue,
+}: {
+  sanityData: ContentPropsType;
+  queue: number;
+}) => {
   return (
     <header className="grid max-w-screen-xl mx-auto w-full px-4 gap-12 md:gap-16 pt-12 md:pt-16 grid-cols-1 justify-items-stretch items-center">
       <div className="relative h-[400px] flex items-center justify-center p-12">
         <Image
-          src={sanityData?.headerImg?.optimizedUrl}
+          src={`/images/banner${queue}.jpg`}
           alt={sanityData?.headerImg?.alt}
           height={400}
           width={1248}

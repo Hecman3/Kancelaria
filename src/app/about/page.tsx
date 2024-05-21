@@ -29,7 +29,7 @@ const About = async () => {
   const sanityData = await getAbout();
   return (
     <div>
-      <BannerHeader sanityData={sanityData} />
+      <BannerHeader sanityData={sanityData} queue={3} />
       <Separator className="max-w-screen-lg mt-10 md:mt-14 md:mb-14 mb-10 mx-auto" />
       <section className="px-4">
         <div className="max-w-screen-lg mx-auto">
