@@ -1,7 +1,7 @@
 export const revalidate = 10;
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { client } from "../../../sanity/lib/client";
-import { Asterisk } from "lucide-react";
+import { Asterisk, Weight } from "lucide-react";
 import BannerHeader from "@/components/BannerHeader";
 import { Separator } from "@/components/ui/separator";
 import { urlFor } from "@/lib/utils";
@@ -44,15 +44,25 @@ const Services = async () => {
           <h1 className="text-3xl font-medium">{sanityData?.title}</h1>
           <p>{sanityData?.description}</p>
         </div>
-        <div className="grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-8 ">
           {sanityData &&
             sanityData.services.map((service: ServiceType, index: number) => (
-              <Card key={index} className="">
-                <CardHeader>
-                  <CardTitle className="text-lg">{service.title}</CardTitle>
+              <Card
+                key={index}
+                className={`hover:scale-105  hover:shadow-lg transition ease-in-out duration-300`}
+              >
+                <CardHeader className="pb-2">
+                  <div className="flex justify-center">
+                    <Weight className="h-6 w-6 mb-2" />
+                  </div>
+                  <CardTitle className="text-lg text-center">
+                    {service.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <span>{service.description}</span>
+                  <span className="text-zinc-600 block text-center">
+                    {service.description}
+                  </span>
                 </CardContent>
               </Card>
             ))}
