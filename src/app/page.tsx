@@ -38,8 +38,7 @@ export default async function Home() {
     <div>
       <HomeHeader sanityData={sanityData} />
       <Separator className="max-w-screen-lg mt-12 md:mt-16 md:mb-14 mb-10 mx-auto" />
-      <section className="max-w-screen-lg mx-auto flex flex-col items-stretch px-4">
-        <h1 className="text-3xl font-medium">{sanityData.title}</h1>
+      <section className="max-w-screen-lg mx-auto px-4">
         <p className="text-xl text-zinc-600">{sanityData.description}</p>
         <PortableText
           value={sanityData.content}

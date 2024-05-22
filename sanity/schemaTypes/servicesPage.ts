@@ -35,6 +35,12 @@ export default defineType({
               title: "Opis",
               type: "text",
             }),
+            defineField({
+              name: "currentTag",
+              title: "Tag",
+              type: "reference",
+              to: [{ type: "tag" }],
+            }),
           ],
         }),
       ],

@@ -13,12 +13,15 @@ export const customDefaultComponents = {
       <h3 className="text-xl font-semibold my-4">{children}</h3>
     ),
     normal: ({ children }) => (
-      <p className="text-lg text-zinc-800 my-2">{children}</p>
+      <p className="text-lg text-zinc-800 mb-8 ">{children}</p>
+    ),
+    listParagraph: ({ children }) => (
+      <p className="text-lg text-zinc-800 mt-8">{children}</p>
     ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc list-inside my-4 text-lg space-y-2 text-zinc-800">
+      <ul className="list-disc list-inside mb-4 mt-2 text-lg space-y-2 text-zinc-800">
         {children}
       </ul>
     ),
@@ -36,7 +39,7 @@ export const customDefaultComponents = {
         <Image
           width={550}
           height={350}
-          className="object-top aspect-auto h-[350px] w-[550px] object-cover rounded-lg"
+          className="object-top aspect-auto h-[350px] w-[550px] object-cover rounded-lg mb-8"
           src={value.asset.url}
           alt={value.alt || " "}
         />
@@ -55,6 +58,7 @@ export const customDefaultComponents = {
     ),
   },
 } as PortableTextComponents;
+
 export const customHeaderComponents = {
   block: {
     h2: ({ children }) => (

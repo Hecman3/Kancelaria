@@ -7,6 +7,7 @@ import servicesPage from "./schemaTypes/servicesPage";
 import other from "./schemaTypes/other";
 import headerBlockContent from "./schemaTypes/headerBlockContent";
 import aboutPage from "./schemaTypes/aboutPage";
+import tags from "./schemaTypes/tags";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -17,5 +18,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     other,
     headerBlockContent,
     aboutPage,
+    tags,
   ],
 };

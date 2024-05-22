@@ -1,16 +1,24 @@
 export const revalidate = 10;
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { client } from "../../../sanity/lib/client";
-import { Asterisk, Weight } from "lucide-react";
 import BannerHeader from "@/components/BannerHeader";
 import { Separator } from "@/components/ui/separator";
 import { urlFor } from "@/lib/utils";
+import React, { ReactNode } from "react";
+import * as icons from "lucide-react";
 
 const getServices = async () => {
   const CONTENT_QUERY = `*[_type == "services"] {
     title,
     description,
-    services,
+    "services": services[] {
+      title,
+      description,
+      "currentTag": currentTag->{
+        label,
+        value
+      },
+    },
     headerImg {
       asset -> {
         url
@@ -19,6 +27,7 @@ const getServices = async () => {
     },
     headerTitle
   }`;
+
   const content = await client.fetch(CONTENT_QUERY);
   const servicesData = content[0];
   if (servicesData.headerImg?.asset) {
@@ -31,10 +40,12 @@ const getServices = async () => {
 type ServiceType = {
   title: string;
   description: string;
+  currentTag: { label: string; value: string } | null;
 };
 
 const Services = async () => {
   const sanityData = await getServices();
+
   return (
     <div>
       <BannerHeader sanityData={sanityData} />
@@ -46,26 +57,33 @@ const Services = async () => {
         </div>
         <div className="grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-8 ">
           {sanityData &&
-            sanityData.services.map((service: ServiceType, index: number) => (
-              <Card
-                key={index}
-                className={`hover:scale-105  hover:shadow-lg transition ease-in-out duration-300`}
-              >
-                <CardHeader className="pb-2">
-                  <div className="flex justify-center">
-                    <Weight className="h-6 w-6 mb-2" />
-                  </div>
-                  <CardTitle className="text-lg text-center">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <span className="text-zinc-600 block text-center">
-                    {service.description}
-                  </span>
-                </CardContent>
-              </Card>
-            ))}
+            sanityData.services.map((service: ServiceType, index: number) => {
+              const IconComponent = service.currentTag
+                ? icons[service.currentTag.value]
+                : null;
+              return (
+                <Card
+                  key={index}
+                  className={`hover:scale-105  hover:shadow-lg transition ease-in-out duration-300`}
+                >
+                  <CardHeader className="pb-2">
+                    {service.currentTag && (
+                      <div className="flex justify-center">
+                        <IconComponent size={24} />
+                      </div>
+                    )}
+                    <CardTitle className="text-lg text-center">
+                      {service.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <span className="text-zinc-600 block text-center">
+                      {service.description}
+                    </span>
+                  </CardContent>
+                </Card>
+              );
+            })}
         </div>
       </section>
     </div>
