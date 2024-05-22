@@ -13,12 +13,14 @@ export const customDefaultComponents = {
       <h3 className="text-xl font-semibold my-4">{children}</h3>
     ),
     normal: ({ children }) => (
-      <p className="text-lg text-zinc-600 my-2">{children}</p>
+      <p className="text-lg text-zinc-800 my-2">{children}</p>
     ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc list-inside my-4">{children}</ul>
+      <ul className="list-disc list-inside my-4 text-lg space-y-2 text-zinc-800">
+        {children}
+      </ul>
     ),
     number: ({ children }) => (
       <ol className="list-decimal list-inside my-4">{children}</ol>
