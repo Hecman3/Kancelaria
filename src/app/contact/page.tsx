@@ -50,7 +50,11 @@ const Contact = async () => {
                     <div key={`address-${index}`} className="space-y-2">
                       <div>{address.street}</div>
                       <div>{address.city}</div>
-                      <div>{address.addressPhone}</div>
+                      <div>
+                        <a href={`tel:${address.addressPhone}`}>
+                          {address.addressPhone}
+                        </a>
+                      </div>
                     </div>
                   )
                 )}
@@ -59,18 +63,28 @@ const Contact = async () => {
                   {sanityData.phones && (
                     <div>
                       {sanityData.phones.map((phone: string, index: number) => (
-                        <span key={`phones-${index}`} className="block">
-                          {phone}
-                        </span>
+                        <div key={`phones-${index}`}>
+                          <a
+                            href={`tel:${phone}`}
+                            className="hover:text-zinc-800 hover:underline"
+                          >
+                            {phone}
+                          </a>
+                        </div>
                       ))}
                     </div>
                   )}
                   {sanityData.emails && (
                     <div>
                       {sanityData.emails.map((email: string, index: number) => (
-                        <span key={`emails-${index}`} className="block">
-                          {email}
-                        </span>
+                        <div key={`emails-${index}`}>
+                          <a
+                            href={`mailto:${email}`}
+                            className="hover:text-zinc-800 hover:underline"
+                          >
+                            {email}
+                          </a>
+                        </div>
                       ))}
                     </div>
                   )}
