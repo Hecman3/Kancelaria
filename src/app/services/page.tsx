@@ -40,11 +40,21 @@ const getServices = async () => {
 type ServiceType = {
   title: string;
   description: string;
-  currentTag: { label: string; value: string } | null;
+  currentTag: { label: string; value: any } | null;
 };
+type IconNames = keyof typeof icons;
+type IconType = React.ComponentType<{ size?: string | number; color?: string }>;
 
 const Services = async () => {
   const sanityData = await getServices();
+
+  const getIconComponent = (iconName: string | undefined): IconType | null => {
+    if (iconName && iconName in icons) {
+      const IconComponent = icons[iconName as IconNames];
+      return IconComponent as IconType;
+    }
+    return null;
+  };
 
   return (
     <div>
@@ -58,18 +68,17 @@ const Services = async () => {
         <div className="grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-8 ">
           {sanityData &&
             sanityData.services.map((service: ServiceType, index: number) => {
-              const IconComponent = service.currentTag
-                ? icons[service.currentTag.value]
-                : null;
+              const IconComponent = getIconComponent(service.currentTag?.value);
               return (
                 <Card
                   key={index}
                   className={`hover:scale-105  hover:shadow-lg transition ease-in-out duration-300`}
                 >
+                  <icons.Gem />
                   <CardHeader className="pb-2">
-                    {service.currentTag && (
+                    {service.currentTag && IconComponent && (
                       <div className="flex justify-center">
-                        <IconComponent size={24} />
+                        {IconComponent && <IconComponent size={24} />}
                       </div>
                     )}
                     <CardTitle className="text-lg text-center">
