@@ -3,7 +3,6 @@ import BannerHeader from "@/components/BannerHeader";
 import { client } from "../../../sanity/lib/client";
 import { Separator } from "@/components/ui/separator";
 import Map from "@/components/Map";
-import { urlFor } from "@/lib/utils";
 
 type AddressTypes = {
   street: string;
@@ -28,14 +27,8 @@ const getContact = async () => {
     headerTitle
   }`;
   const content = await client.fetch(CONTENT_QUERY);
-  const contactData = content[0];
 
-  if (contactData.headerImg?.asset) {
-    contactData.headerImg.optimizedUrl = urlFor({
-      source: contactData.headerImg.asset.url,
-    });
-  }
-  return contactData;
+  return content[0];
 };
 
 const Contact = async () => {

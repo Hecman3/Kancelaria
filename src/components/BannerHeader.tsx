@@ -2,8 +2,14 @@ import { ContentPropsType } from "@/types/global";
 import { PortableText } from "@portabletext/react";
 import { customHeaderComponents } from "./CustomBlockComponents";
 import Image from "next/image";
+import { urlFor } from "@/lib/utils";
 
 const BannerHeader = ({ sanityData }: { sanityData: ContentPropsType }) => {
+  if (sanityData.headerImg?.asset) {
+    sanityData.headerImg.optimizedUrl = urlFor({
+      source: sanityData.headerImg.asset.url,
+    });
+  }
   return (
     <header className="grid max-w-screen-xl mx-auto w-full px-4 gap-12 md:gap-16 pt-12 md:pt-16 grid-cols-1 justify-items-stretch items-center">
       <div className="relative h-[400px] flex items-center justify-center p-12">

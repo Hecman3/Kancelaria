@@ -5,7 +5,6 @@ import { Separator } from "@/components/ui/separator";
 import { client } from "../../../sanity/lib/client";
 import { PortableText } from "@portabletext/react";
 import { customDefaultComponents } from "@/components/CustomBlockComponents";
-import { urlFor } from "@/lib/utils";
 
 const getAbout = async () => {
   const CONTENT_QUERY = `*[_type == "about"] {
@@ -20,14 +19,8 @@ const getAbout = async () => {
     headerTitle
   }`;
   const content = await client.fetch(CONTENT_QUERY);
-  const aboutData = content[0];
 
-  if (aboutData.headerImg?.asset) {
-    aboutData.headerImg.optimizedUrl = urlFor({
-      source: aboutData.headerImg.asset.url,
-    });
-  }
-  return aboutData;
+  return content[0];
 };
 
 const About = async () => {

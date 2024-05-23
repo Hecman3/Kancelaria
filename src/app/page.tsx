@@ -1,9 +1,9 @@
 export const revalidate = 10;
-import HomeHeader from "@/components/HomeHeader";
 import { client } from "../../sanity/lib/client";
 import { Separator } from "@/components/ui/separator";
 import { PortableText } from "@portabletext/react";
 import { customDefaultComponents } from "@/components/CustomBlockComponents";
+import BannerHeader from "@/components/BannerHeader";
 
 async function getContent() {
   const CONTENT_QUERY = `*[_type == "homepage"] {
@@ -36,7 +36,7 @@ export default async function Home() {
   const sanityData = await getContent();
   return (
     <div>
-      <HomeHeader sanityData={sanityData} />
+      <BannerHeader sanityData={sanityData} />
       <Separator className="max-w-screen-lg mt-12 md:mt-16 md:mb-14 mb-10 mx-auto" />
       <section className="max-w-screen-lg mx-auto px-4">
         <p className="text-xl text-zinc-600">{sanityData.description}</p>

@@ -3,8 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { client } from "../../../sanity/lib/client";
 import BannerHeader from "@/components/BannerHeader";
 import { Separator } from "@/components/ui/separator";
-import { urlFor } from "@/lib/utils";
-import React, { ReactNode } from "react";
+import React from "react";
 import * as icons from "lucide-react";
 
 const getServices = async () => {
@@ -29,14 +28,10 @@ const getServices = async () => {
   }`;
 
   const content = await client.fetch(CONTENT_QUERY);
-  const servicesData = content[0];
-  if (servicesData.headerImg?.asset) {
-    servicesData.headerImg.optimizedUrl = urlFor({
-      source: servicesData.headerImg.asset.url,
-    });
-  }
+
   return content[0];
 };
+
 type ServiceType = {
   title: string;
   description: string;

@@ -9,9 +9,10 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 export const metadata = {
-  title: "Kancelaria Adwokacka Warszawa prawnik adwokat Warszawa Marcin Hećman",
+  title:
+    "Adwokat Marcin Hećman: Specjalista ds. Prawa dla ciebie | Profesjonalna Obrona i Doradztwo Prawne w Całej Polsce",
   description:
-    "Swoją ofertę przedstawia Państwu rzetelna kancelaria adwokacka. Warszawa to miasto, w którym mieści się nasza siedziba. Doświadczony prawnik wesprze w sprawie z zakresu prawa cywilnego, a fachowy adwokat doradzi w dziedzinie prawa karnego.",
+    "Marcin Hećman to doświadczony adwokat, którego kancelaria znajduje się w Ożarowie Mazowieckim, ale oferuje swoje usługi na terenie całego kraju, w tym w Warszawie. Specjalizuje się w szerokim zakresie dziedzin prawnych, w tym w prawie karnym, karnoskarbowym, cywilnym, gospodarczym, rodzinno-opiekuńczym, spadkowym, pracy, ubezpieczeń społecznych oraz administracyjnym. Jego zaangażowanie i doświadczenie pozwalają na skuteczne radzenie sobie z trudnymi i złożonymi sprawami prawnymi. Marcin Hećman zaprasza do kontaktu wszystkich, którzy potrzebują profesjonalnej pomocy prawnej, oferując konsultacje, które mogą przynieść realne korzyści dla Twojej sytuacji prawnej.",
 };
 
 export default function RootLayout({
@@ -29,21 +30,37 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-sans)" }}
       >
         <Nav />
-        <main className="max-w-screen-xl w-full mx-auto flex-grow mb-12 md:mb-16">
-          {children}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 -top-[200px] -z-10 transform-gpu overflow-hidden blur-3xl lg:-top-10"
-          >
+        <div className="relative">
+          <main className="max-w-screen-xl w-full mx-auto flex-grow mb-12 md:mb-16">
+            {children}
+          </main>
+          <div className="absolute inset-0 h-full w-screen overflow-hidden">
             <div
-              style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-              }}
-              className="relative left-[calc(50%-5rem)] aspect-[1155/678] -translate-x-1/2 rotate-[45deg] lg:rotate-[115deg] bg-gradient-to-tr from-[#08a045] to-[#08a045] opacity-30 lg:left-[calc(50%-30rem)] w-[72.1875rem]"
-            ></div>
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 -top-[200px] -z-10 transform-gpu overflow-hidden blur-3xl lg:-top-10"
+            >
+              <div
+                style={{
+                  clipPath:
+                    "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+                }}
+                className="relative left-[calc(50%-5rem)] aspect-[1155/678] -translate-x-2/3 rotate-[45deg] lg:rotate-[115deg] bg-gradient-to-tr from-[#08a045] to-[#08a045] opacity-30 lg:left-[calc(50%-30rem)] w-[72.1875rem]"
+              ></div>
+            </div>
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-[200px] -z-10 transform-gpu overflow-hidden blur-3xl lg:top-[100vh]"
+            >
+              <div
+                style={{
+                  clipPath:
+                    "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+                }}
+                className="relative left-[calc(50%-5rem)] aspect-[1155/678] translate-x-2/3 rotate-[45deg] lg:rotate-[85deg] bg-gradient-to-tr from-[#08a045] to-[#08a045] opacity-30 lg:left-[calc(50%-30rem)] w-[72.1875rem]"
+              ></div>
+            </div>
           </div>
-        </main>
+        </div>
         <Footer />
       </body>
     </html>
