@@ -18,7 +18,7 @@ type UrlBuilderTypes = {
 export function urlFor({
   source,
   format = "webp",
-  height = 400,
+  height = 600,
   quality = 90,
   width = 1240,
 }: UrlBuilderTypes) {
