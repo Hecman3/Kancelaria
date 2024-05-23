@@ -74,7 +74,6 @@ const Services = async () => {
                   key={index}
                   className={`hover:scale-105  hover:shadow-lg transition ease-in-out duration-300`}
                 >
-                  <icons.Gem />
                   <CardHeader className="pb-2">
                     {service.currentTag && IconComponent && (
                       <div className="flex justify-center">
