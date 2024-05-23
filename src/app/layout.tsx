@@ -31,10 +31,10 @@ export default function RootLayout({
       >
         <Nav />
         <div className="relative">
-          <main className="max-w-screen-xl w-full mx-auto flex-grow mb-12 md:mb-16">
+          <main className="max-w-screen-xl w-full mx-auto flex-grow mb-12 z-10 md:mb-16">
             {children}
           </main>
-          <div className="absolute inset-0 h-full w-screen overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 h-full w-screen overflow-hidden">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-x-0 -top-[200px] -z-10 transform-gpu overflow-hidden blur-3xl lg:-top-10"

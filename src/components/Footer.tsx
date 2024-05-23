@@ -8,7 +8,8 @@ const getFooter = async () => {
   const CONTACT_QUERY = `*[_type == "contact"] {
     title,
     addresses,
-    emails
+    emails,
+    phones
   
   }`;
   const OTHER_QUERY = `*[_type == "other"] {
@@ -39,6 +40,9 @@ const Footer = async () => {
               </span>
               <span className="block border-b-2 border-transparent">
                 {sanityData.contact.emails[0]}
+              </span>
+              <span className="block border-b-2 border-transparent">
+                {sanityData.contact.phones[0]}
               </span>
               <span className="block border-b-2 border-transparent">
                 {sanityData.contact.addresses[0].addressPhone}
