@@ -47,11 +47,11 @@ const Contact = async () => {
               <div className="text-zinc-600 space-y-2">
                 {sanityData.addresses.map(
                   (address: AddressTypes, index: number) => (
-                    <>
+                    <div key={`address-${index}`} className="space-y-2">
                       <div>{address.street}</div>
                       <div>{address.city}</div>
                       <div>{address.addressPhone}</div>
-                    </>
+                    </div>
                   )
                 )}
 
@@ -59,7 +59,7 @@ const Contact = async () => {
                   {sanityData.phones && (
                     <div>
                       {sanityData.phones.map((phone: string, index: number) => (
-                        <span key={index} className="block">
+                        <span key={`phones-${index}`} className="block">
                           {phone}
                         </span>
                       ))}
@@ -68,7 +68,7 @@ const Contact = async () => {
                   {sanityData.emails && (
                     <div>
                       {sanityData.emails.map((email: string, index: number) => (
-                        <span key={index} className="block">
+                        <span key={`emails-${index}`} className="block">
                           {email}
                         </span>
                       ))}

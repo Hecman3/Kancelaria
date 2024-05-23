@@ -66,7 +66,7 @@ const Services = async () => {
               const IconComponent = getIconComponent(service.currentTag?.value);
               return (
                 <Card
-                  key={index}
+                  key={`services-${index}`}
                   className={`hover:scale-105  hover:shadow-lg transition ease-in-out duration-300`}
                 >
                   <CardHeader className="pb-2">
