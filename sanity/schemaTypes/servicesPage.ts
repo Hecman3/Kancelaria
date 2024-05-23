@@ -46,6 +46,22 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "subtitle",
+      title: "Podtytuł",
+      type: "string",
+    }),
+    defineField({
+      name: "subdescription",
+      title: "Podpis",
+      type: "text",
+    }),
+    defineField({
+      name: "files",
+      title: "Pliki",
+      type: "array",
+      of: [{ type: "file" }],
+    }),
+    defineField({
       name: "headerImg",
       title: "Zdjęcie nagłówka",
       type: "image",

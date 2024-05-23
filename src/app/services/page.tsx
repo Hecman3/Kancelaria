@@ -19,6 +19,12 @@ const getServices = async () => {
         value
       },
     },
+    subtitle,
+    subdescription,
+    "files": files[].asset->{
+      url,
+      originalFilename,
+    },
     headerImg {
       asset -> {
         url
@@ -62,7 +68,7 @@ const Services = async () => {
             description={sanityData.description}
           />
         )}
-        <div className="grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-8 ">
+        <div className="grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
           {sanityData.services &&
             sanityData.services.length > 0 &&
             sanityData.services.map((service: ServiceType, index: number) => {
@@ -70,12 +76,12 @@ const Services = async () => {
               return (
                 <Card
                   key={`services-${index}`}
-                  className={`hover:scale-105  hover:shadow-lg transition ease-in-out duration-300`}
+                  className="hover:scale-105 hover:shadow-lg transition ease-in-out duration-300"
                 >
                   <CardHeader className="pb-2">
                     {service.currentTag && IconComponent && (
                       <div className="flex justify-center">
-                        {IconComponent && <IconComponent size={24} />}
+                        {IconComponent && <IconComponent size={26} />}
                       </div>
                     )}
                     <CardTitle className="text-lg text-center">
@@ -91,6 +97,41 @@ const Services = async () => {
               );
             })}
         </div>
+        {sanityData.files && sanityData.files.length > 0 && (
+          <div>
+            {sanityData.subtitle && (
+              <h2 className="text-3xl font-medium my-4">
+                {sanityData.subtitle}
+              </h2>
+            )}
+            {sanityData.subdescription && (
+              <p className="text-lg text-zinc-800 mb-8">
+                {sanityData.subdescription}
+              </p>
+            )}
+            <div className="flex gap-8">
+              {sanityData.files.map((file: any, index: number) => {
+                return (
+                  <Card
+                    key={`file-${index}`}
+                    className="hover:scale-105 hover:shadow-lg transition ease-in-out duration-300"
+                  >
+                    <a
+                      href={file.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <CardContent className="pt-6 flex flex-col items-center gap-2">
+                        <icons.FileDown size={48} className="text-primary" />
+                        {file.originalFilename}
+                      </CardContent>
+                    </a>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </section>
     </div>
   );

@@ -14,7 +14,7 @@ export const customDefaultComponents = {
       <h3 className="text-2xl font-semibold my-4">{children}</h3>
     ),
     normal: ({ children }) => (
-      <p className="text-lg text-zinc-800 mb-8 ">{children}</p>
+      <p className="text-lg text-zinc-800 mb-8">{children}</p>
     ),
     listParagraph: ({ children }) => (
       <p className="text-lg text-zinc-800 mt-8">{children}</p>
