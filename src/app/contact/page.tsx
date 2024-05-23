@@ -59,35 +59,29 @@ const Contact = async () => {
                   )
                 )}
 
-                <div className="pt-6">
-                  {sanityData.phones && (
-                    <div>
-                      {sanityData.phones.map((phone: string, index: number) => (
-                        <div key={`phones-${index}`}>
-                          <a
-                            href={`tel:${phone}`}
-                            className="hover:text-zinc-800 hover:underline"
-                          >
-                            {phone}
-                          </a>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {sanityData.emails && (
-                    <div>
-                      {sanityData.emails.map((email: string, index: number) => (
-                        <div key={`emails-${index}`}>
-                          <a
-                            href={`mailto:${email}`}
-                            className="hover:text-zinc-800 hover:underline"
-                          >
-                            {email}
-                          </a>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                <div className="pt-6 space-y-2">
+                  {sanityData.phones &&
+                    sanityData.phones.map((phone: string, index: number) => (
+                      <div key={`phones-${index}`}>
+                        <a
+                          href={`tel:${phone}`}
+                          className="hover:text-zinc-800 hover:underline"
+                        >
+                          {phone}
+                        </a>
+                      </div>
+                    ))}
+                  {sanityData.emails &&
+                    sanityData.emails.map((email: string, index: number) => (
+                      <div key={`emails-${index}`}>
+                        <a
+                          href={`mailto:${email}`}
+                          className="hover:text-zinc-800 hover:underline"
+                        >
+                          {email}
+                        </a>
+                      </div>
+                    ))}
                 </div>
                 <div className="pt-6">
                   <span>NIP: </span>
