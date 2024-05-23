@@ -4,6 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import { PortableText } from "@portabletext/react";
 import { customDefaultComponents } from "@/components/CustomBlockComponents";
 import BannerHeader from "@/components/BannerHeader";
+import PageTitle from "@/components/PageTitle";
 
 async function getContent() {
   const CONTENT_QUERY = `*[_type == "homepage"] {
@@ -37,10 +38,12 @@ export default async function Home() {
   return (
     <div>
       <BannerHeader sanityData={sanityData} />
-      <Separator className="max-w-screen-lg mt-12 md:mt-16 md:mb-14 mb-10 mx-auto" />
       <section className="max-w-screen-lg mx-auto px-4">
-        {sanityData.description && (
-          <p className="text-xl text-zinc-600">{sanityData.description}</p>
+        {(sanityData.title || sanityData.description) && (
+          <PageTitle
+            title={sanityData.title}
+            description={sanityData.description}
+          />
         )}
         {sanityData.content && (
           <PortableText

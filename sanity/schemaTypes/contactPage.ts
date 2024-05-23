@@ -78,7 +78,11 @@ export default defineType({
         }),
       ],
     }),
-
+    defineField({
+      name: "additionalInfo",
+      title: "Dodatkowe informacje",
+      type: "text",
+    }),
     defineField({
       name: "headerImg",
       title: "Zdjęcie nagłówka",

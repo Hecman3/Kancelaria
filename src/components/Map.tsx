@@ -10,7 +10,7 @@ const Map = ({ addresses }: { addresses: AddressTypes[] }) => {
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_API_KEY as string;
     const map = new mapboxgl.Map({
       container: "map",
-      center: [21.0122, 52.2297],
+      center: [20.809604, 52.208624],
       zoom: 12,
     });
     const bounds = new mapboxgl.LngLatBounds();

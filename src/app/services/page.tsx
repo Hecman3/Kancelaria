@@ -5,6 +5,7 @@ import BannerHeader from "@/components/BannerHeader";
 import { Separator } from "@/components/ui/separator";
 import React from "react";
 import * as icons from "lucide-react";
+import PageTitle from "@/components/PageTitle";
 
 const getServices = async () => {
   const CONTENT_QUERY = `*[_type == "services"] {
@@ -54,14 +55,13 @@ const Services = async () => {
   return (
     <div>
       <BannerHeader sanityData={sanityData} />
-      <Separator className="max-w-screen-lg mt-10 md:mt-14 md:mb-14 mb-10 mx-auto" />
       <section className="px-4 max-w-screen-lg mx-auto">
-        <div className="space-y-1 mb-8">
-          {sanityData.title && (
-            <h1 className="text-3xl font-medium">{sanityData.title}</h1>
-          )}
-          {sanityData.description && <p>{sanityData.description}</p>}
-        </div>
+        {(sanityData.title || sanityData.description) && (
+          <PageTitle
+            title={sanityData.title}
+            description={sanityData.description}
+          />
+        )}
         <div className="grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-8 ">
           {sanityData.services &&
             sanityData.services.length > 0 &&

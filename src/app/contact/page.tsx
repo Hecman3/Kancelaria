@@ -1,8 +1,8 @@
 export const revalidate = 10;
 import BannerHeader from "@/components/BannerHeader";
 import { client } from "../../../sanity/lib/client";
-import { Separator } from "@/components/ui/separator";
 import Map from "@/components/Map";
+import PageTitle from "@/components/PageTitle";
 
 type AddressTypes = {
   street: string;
@@ -13,11 +13,13 @@ type AddressTypes = {
 const getContact = async () => {
   const CONTENT_QUERY = `*[_type == "contact"] {
     title,
+    description,
     addresses,
     phones,
     emails,
     REGON,
     NIP,
+    additionalInfo,
     headerImg {
       asset -> {
         url
@@ -36,15 +38,16 @@ const Contact = async () => {
   return (
     <div>
       <BannerHeader sanityData={sanityData} />
-      <Separator className="max-w-screen-lg mt-10 md:mt-14 md:mb-14 mb-10 mx-auto" />
       <section className="px-4">
         <div className="flex flex-col md:flex-row justify-between gap-8">
           <div className="flex gap-4 flex-col sm:flex-row justify-between">
             <div>
-              {sanityData.title && (
-                <h1 className="text-2xl font-semibold mb-6">
-                  {sanityData.title}
-                </h1>
+              {(sanityData.title || sanityData.description) && (
+                <PageTitle
+                  title={sanityData.title}
+                  description={sanityData.description}
+                  customDescriptionSpacing="mb-2"
+                />
               )}
               <div className="text-zinc-600 space-y-2">
                 {sanityData.addresses &&
@@ -99,6 +102,11 @@ const Contact = async () => {
                   <div>
                     <span>REGON: </span>
                     <span>{sanityData.REGON}</span>
+                  </div>
+                )}
+                {sanityData.additionalInfo && (
+                  <div className="pt-6">
+                    <span>{sanityData.additionalInfo}</span>
                   </div>
                 )}
               </div>

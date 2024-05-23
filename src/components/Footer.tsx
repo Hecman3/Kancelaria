@@ -24,9 +24,9 @@ const getFooter = async () => {
 const Footer = async () => {
   const sanityData = await getFooter();
   return (
-    <footer className="border-t bg-white border-t-zinc-100 pt-4 pb-6">
-      <div className="max-w-screen-xl mx-auto px-4 space-y-12">
-        <div className="flex gap-4 flex-col sm:flex-row justify-between">
+    <footer className="border-t bg-white border-t-zinc-100 pt-12 md:pt-14 pb-12 md:pb-14">
+      <div className="max-w-screen-xl mx-auto px-4 space-y-12 md:space-y-14">
+        <div className="flex gap-8 flex-col sm:flex-row justify-between">
           <div>
             <h2 className="text-lg font-medium mb-1">
               Kancelaria Adwokacka Adwokat Marcin Hećman
