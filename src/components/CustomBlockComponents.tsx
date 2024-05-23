@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PortableTextComponents } from "@portabletext/react";
+import { urlFor } from "@/lib/utils";
 
 export const customDefaultComponents = {
   block: {
@@ -35,13 +36,20 @@ export const customDefaultComponents = {
   },
   types: {
     image: ({ value }: { value: any }) => {
+      if (value.asset.url) {
+        value.optimizedUrl = urlFor({
+          source: value.asset.url,
+          height: 350,
+          width: 550,
+        });
+      }
       return (
         <Image
           width={550}
           height={350}
           className="object-top aspect-auto h-[350px] w-[550px] object-cover rounded-lg mb-8"
-          src={value.asset.url}
-          alt={value.alt || " "}
+          src={value.optimizedUrl || ""}
+          alt={value.alt || "Zdjęcie Marcin Hećman"}
         />
       );
     },

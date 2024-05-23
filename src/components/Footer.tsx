@@ -32,52 +32,68 @@ const Footer = async () => {
               Kancelaria Adwokacka Adwokat Marcin Hećman
             </h2>
             <div className="space-y-1 text-zinc-600">
-              <span className="block border-b-2 border-transparent">
-                {sanityData.contact?.addresses[0].street}
-              </span>
-              <span className="block border-b-2 border-transparent">
-                {sanityData.contact?.addresses[0].city}
-              </span>
-              <div>
-                <a
-                  href={`mailto:${sanityData.contact.emails[0]}`}
-                  className="border-b-2 border-transparent hover:text-zinc-800 hover:underline"
-                >
-                  {sanityData.contact.emails[0]}
-                </a>
-              </div>
-              <div>
-                <a
-                  href={`tel:${sanityData.contact.phones[0]}`}
-                  className="inline-block border-b-2 border-transparent hover:text-zinc-800 hover:underline"
-                >
-                  {sanityData.contact.phones[0]}
-                </a>
-              </div>
-              <span className="block border-b-2 border-transparent">
-                {sanityData.contact.addresses[0].addressPhone}
-              </span>
+              {sanityData.contact?.addresses[0] &&
+                sanityData.contact?.addresses[0].street && (
+                  <span className="block border-b-2 border-transparent">
+                    {sanityData.contact.addresses[0].street}
+                  </span>
+                )}
+              {sanityData.contact?.addresses[0] &&
+                sanityData.contact?.addresses[0].city && (
+                  <span className="block border-b-2 border-transparent">
+                    {sanityData.contact.addresses[0].city}
+                  </span>
+                )}
+              {sanityData.contact.emails[0] && (
+                <div>
+                  <a
+                    href={`mailto:${sanityData.contact.emails[0]}`}
+                    className="border-b-2 border-transparent hover:text-zinc-800 hover:underline"
+                  >
+                    {sanityData.contact.emails[0]}
+                  </a>
+                </div>
+              )}
+              {sanityData.contact.phones[0] && (
+                <div>
+                  <a
+                    href={`tel:${sanityData.contact.phones[0]}`}
+                    className="inline-block border-b-2 border-transparent hover:text-zinc-800 hover:underline"
+                  >
+                    {sanityData.contact.phones[0]}
+                  </a>
+                </div>
+              )}
+              {sanityData.contact.addresses[0] &&
+                sanityData.contact.addresses[0].addressPhone && (
+                  <span className="block border-b-2 border-transparent">
+                    {sanityData.contact.addresses[0].addressPhone}
+                  </span>
+                )}
             </div>
           </div>
           <div>
             <h2 className="text-lg font-medium mb-1">Menu</h2>
             <ul className="space-y-1">
-              {linkArray.map((link) => (
-                <li key={link.key}>
-                  <Link
-                    href={link.path}
-                    className={`transition-colors text-left text-zinc-600 ease-out inline-block border-y-2 border-y-transparent hover:text-foreground hover:border-b-zinc-300`}
-                  >
-                    {link.value}
-                  </Link>
-                </li>
-              ))}
+              {linkArray &&
+                linkArray.map((link) => (
+                  <li key={link.key}>
+                    <Link
+                      href={link.path}
+                      className={`transition-colors text-left text-zinc-600 ease-out inline-block border-y-2 border-y-transparent hover:text-foreground hover:border-b-zinc-300`}
+                    >
+                      {link.value}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
-        <p className="text-sm text-center text-zinc-600">
-          {sanityData.other.copyright}
-        </p>
+        {sanityData.other.copyright && (
+          <p className="text-sm text-center text-zinc-600">
+            {sanityData.other.copyright}
+          </p>
+        )}
       </div>
     </footer>
   );
