@@ -16,10 +16,9 @@ const BannerHeader = ({ sanityData }: { sanityData: ContentPropsType }) => {
         <Image
           src={sanityData?.headerImg?.optimizedUrl || ""}
           alt={sanityData?.headerImg?.alt}
-          height={400}
-          width={1240}
+          fill
           priority
-          className="absolute top-0 left-0 w-full h-full object-top object-cover rounded-lg "
+          className="absolute aspect-auto top-0 left-0 w-full h-full object-top object-cover rounded-lg "
         />
         <div className="absolute inset-0 bg-black bg-opacity-55 rounded-lg bg-cover"></div>
         <div className="relative space-y-1 max-w-screen-sm text-center">

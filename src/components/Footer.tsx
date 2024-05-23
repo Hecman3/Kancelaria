@@ -31,23 +31,33 @@ const Footer = async () => {
             <h2 className="text-lg font-medium mb-1">
               Kancelaria Adwokacka Adwokat Marcin Hećman
             </h2>
-            <p className="space-y-1 text-zinc-600">
+            <div className="space-y-1 text-zinc-600">
               <span className="block border-b-2 border-transparent">
                 {sanityData.contact?.addresses[0].street}
               </span>
               <span className="block border-b-2 border-transparent">
                 {sanityData.contact?.addresses[0].city}
               </span>
-              <span className="block border-b-2 border-transparent">
-                {sanityData.contact.emails[0]}
-              </span>
-              <span className="block border-b-2 border-transparent">
-                {sanityData.contact.phones[0]}
-              </span>
+              <div>
+                <a
+                  href={`mailto:${sanityData.contact.emails[0]}`}
+                  className="border-b-2 border-transparent hover:text-zinc-800 hover:underline"
+                >
+                  {sanityData.contact.emails[0]}
+                </a>
+              </div>
+              <div>
+                <a
+                  href={`tel:${sanityData.contact.phones[0]}`}
+                  className="inline-block border-b-2 border-transparent hover:text-zinc-800 hover:underline"
+                >
+                  {sanityData.contact.phones[0]}
+                </a>
+              </div>
               <span className="block border-b-2 border-transparent">
                 {sanityData.contact.addresses[0].addressPhone}
               </span>
-            </p>
+            </div>
           </div>
           <div>
             <h2 className="text-lg font-medium mb-1">Menu</h2>
