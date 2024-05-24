@@ -45,12 +45,14 @@ export default async function Home() {
             description={sanityData.description}
           />
         )}
-        {sanityData.content && (
-          <PortableText
-            value={sanityData.content}
-            components={customDefaultComponents}
-          />
-        )}
+        <div className="text-justify">
+          {sanityData.content && (
+            <PortableText
+              value={sanityData.content}
+              components={customDefaultComponents}
+            />
+          )}
+        </div>
       </section>
     </div>
   );

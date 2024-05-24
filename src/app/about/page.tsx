@@ -36,13 +36,14 @@ const About = async () => {
             description={sanityData.description}
           />
         )}
-        {sanityData.content && (
-          <PortableText
-            value={sanityData.content}
-            components={customDefaultComponents}
-          />
-        )}
-        <div className=""></div>
+        <div className="text-justify">
+          {sanityData.content && (
+            <PortableText
+              value={sanityData.content}
+              components={customDefaultComponents}
+            />
+          )}
+        </div>
       </section>
     </div>
   );
