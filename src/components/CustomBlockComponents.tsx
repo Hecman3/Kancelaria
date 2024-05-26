@@ -22,7 +22,7 @@ export const customDefaultComponents = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc list-inside mb-4 mt-2 text-lg space-y-2 text-zinc-800">
+      <ul className="list-disc list-inside mb-8 mt-2 text-lg space-y-2 text-zinc-800">
         {children}
       </ul>
     ),
